@@ -1,8 +1,13 @@
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,44 +22,60 @@ public class GestionarDineroInterfaz extends JFrame{
     JPanel panel = new JPanel();
 
     GestionarDineroInterfaz(){
-
+        
         this.inicializarVentana();
-        this.componentesLabel();
-        this.componentesBotones();
-
-        this.add(panel);
+        this.inicializarComponentes();
 
     }
 
     public void inicializarVentana(){
 
         this.setTitle("Gestionar Dinero");
-        this.setSize(400, 300);
+        this.setSize(900, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         panel.setLayout(new FlowLayout());
     }
 
-    public void componentesLabel(){
 
-        JLabel label = new JLabel("Opciones de Gestión de Dinero");
-        panel.add(label);
-    }
+    public void inicializarComponentes(){
 
-    public void componentesBotones(){
+        JPanel panelSecondImagen = new PanelSecondConImagen(new ImageIcon("C://Users//Fabian//OneDrive//Escritorio//Imagenes//panteraRosafoto2.jpg"));
 
-        JButton btnOpcion1 = new JButton("Agregar Dinero");
-        JButton btnOpcion2 = new JButton("Extraer Dinero");
-        JButton btnOpcion3 = new JButton("Monto Total");
-        JButton btnOpcion4 = new JButton("Gastos Alquiler");
-        JButton btnOpcion5 = new JButton("Gastos Celular");
-        JButton btnOpcion6 = new JButton("Gastos FIJOS");
-        JButton btnOpcion7 = new JButton("SALIR");
+        panelSecondImagen.setLayout(new BorderLayout());
+        // Crear la etiqueta del título o encabezado del programa
+        JLabel header2 = new JLabel("Opciones de Gestión de Dinero",JLabel.CENTER);
+        header2.setFont(new Font("Arial", Font.BOLD, 20));
+        header2.setForeground(Color.WHITE); // Texto en blanco para destacar
+        panelSecondImagen.add(header2, BorderLayout.NORTH);
+
+        //----------------------------------------------------------------------------------------
+
+        // Panel para los botones
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        panelBotones.setOpaque(false); // Hacer el panel transparente para ver la imagen
+
+        JButton btnAgregarDinero = new JButton("Agregar Dinero");
+        JButton btnExtraerDinero = new JButton("Extraer Dinero");
+        JButton btnMontoTotal = new JButton("Monto Total");
+        JButton btnGastosAlquiler = new JButton("Gastos Alquiler");
+        JButton btnGastosCelular = new JButton("Gastos Celular");
+        JButton btnGastosFijos = new JButton("Gastos FIJOS");
+        JButton btnEXIT = new JButton("SALIR");
+
+        // Ajustar tamaño preferido de los botones
+        btnAgregarDinero.setPreferredSize(new Dimension(150, 30));
+        btnExtraerDinero.setPreferredSize(new Dimension(150, 30));
+        btnMontoTotal.setPreferredSize(new Dimension(150, 30));
+        btnGastosAlquiler.setPreferredSize(new Dimension(150, 30));
+        btnGastosCelular.setPreferredSize(new Dimension(150, 30));
+        btnGastosFijos.setPreferredSize(new Dimension(150, 30));
+        btnEXIT.setPreferredSize(new Dimension(150, 30));
 
         //Eventos de los botones
         //------------------------------------------------------------------------------------------
-        btnOpcion1.addActionListener(new ActionListener() {
+        btnAgregarDinero.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
@@ -68,7 +89,7 @@ public class GestionarDineroInterfaz extends JFrame{
                 }
         });
 
-        btnOpcion2.addActionListener(new ActionListener() {
+        btnExtraerDinero.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -84,7 +105,7 @@ public class GestionarDineroInterfaz extends JFrame{
         
 
 
-        btnOpcion3.addActionListener(new ActionListener(){
+        btnMontoTotal.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 operaciones.mostrarDineroActual();
@@ -92,7 +113,7 @@ public class GestionarDineroInterfaz extends JFrame{
         });
 
 
-        btnOpcion4.addActionListener(new ActionListener(){
+        btnGastosAlquiler.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Alquiler A Modificar: "));
@@ -101,7 +122,7 @@ public class GestionarDineroInterfaz extends JFrame{
         });
 
 
-        btnOpcion5.addActionListener(new ActionListener(){
+        btnGastosCelular.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Celular A Modificar: "));
@@ -111,14 +132,14 @@ public class GestionarDineroInterfaz extends JFrame{
         });
 
 
-        btnOpcion6.addActionListener(new ActionListener(){
+        btnGastosFijos.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 operaciones.cuentasFijas();
             }
         });
 
-        btnOpcion7.addActionListener(new ActionListener(){
+        btnEXIT.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 dispose();// Cierra solo la ventana actual
@@ -126,13 +147,19 @@ public class GestionarDineroInterfaz extends JFrame{
         });
 
         //------------------------------------------------------------------------------------------
-        panel.add(btnOpcion1);
-        panel.add(btnOpcion2);
-        panel.add(btnOpcion3);
-        panel.add(btnOpcion4);
-        panel.add(btnOpcion5);
-        panel.add(btnOpcion6);
-        panel.add(btnOpcion7);
+        panelBotones.add(btnAgregarDinero);
+        panelBotones.add(btnExtraerDinero);
+        panelBotones.add(btnMontoTotal);
+        panelBotones.add(btnGastosAlquiler);
+        panelBotones.add(btnGastosCelular);
+        panelBotones.add(btnGastosFijos);
+        panelBotones.add(btnEXIT);
+
+        // Agregar panel de botones al centro del panel principal
+        panelSecondImagen.add(panelBotones, BorderLayout.CENTER);
+
+        // Agregar panel segundo al JFrame
+        this.add(panelSecondImagen);
     }
 
     

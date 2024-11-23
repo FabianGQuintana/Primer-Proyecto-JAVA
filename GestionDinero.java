@@ -99,11 +99,15 @@ public class GestionDinero{
      * @param p_dinero el dinero a extraer .
      */
     public void extraerDinero(double p_dinero) {
-        if (p_dinero <= this.getDineroIngresado() - this.getDineroExtraido()) {
+        if (p_dinero <= this.getDineroIngresado() - this.getDineroExtraido() && this.montoTotal() != 0 && p_dinero > 0) {
         this.setDineroExtraido(this.getDineroExtraido() + p_dinero); // Agregar al total extraído
         JOptionPane.showMessageDialog(null, "Se Ha Extraído: $" + p_dinero + " Correctamente.");
-        } else {
-        JOptionPane.showMessageDialog(null, "No Hay Suficiente Dinero En La Cuenta Para Extraer.");
+        } else if(p_dinero <= this.getDineroIngresado() - this.getDineroExtraido() && this.montoTotal() != 0 && p_dinero < 0){
+        JOptionPane.showMessageDialog(null, "No Se Puede Extraer Dinero Negativo!\n Intentelo Nuevamente.");
+        }else if(p_dinero == 0){
+            JOptionPane.showMessageDialog(null, "No Se Puede Extraer $0.\n intenta con otro saldo.");
+        }else{
+            JOptionPane.showMessageDialog(null, "No Hay Suficiente Dinero En La Cuenta Para Extraer.");
         }
     }
     
@@ -129,8 +133,17 @@ public class GestionDinero{
      * @param p_nuevoPrecio el precio nuevo a modificar  o sumar en la cuenta.
      */
     public void cuentaCelular(double p_nuevoPrecio){
+        if(p_nuevoPrecio > 0  && this.getDineroIngresado() >= 1){
         this.setDineroCelulares(this.getDineroCelular() + p_nuevoPrecio);
         this.extraerDinero(p_nuevoPrecio);
+        }else if(this.getDineroIngresado() == 0){
+            JOptionPane.showMessageDialog(null,"Primero Necesita ingresar dinero a la cuenta");
+        }else if(p_nuevoPrecio == 0){
+            JOptionPane.showMessageDialog(null,"No se puede ingresar un valor cero.\n intentelo nuevamente");
+        }else{
+            JOptionPane.showMessageDialog(null,"No se puede ingresar un valor negativo.\n intentelo nuevamente");
+        }
+        
     }
 
     /**
@@ -138,8 +151,17 @@ public class GestionDinero{
      * servicios del alquiler.
      */
     public void cuentaAlquiler(double p_nuevoPrecio){
-        this.setDineroAlquiler(this.getDineroAlquiler() + p_nuevoPrecio);
-        this.extraerDinero(p_nuevoPrecio);
+        if(p_nuevoPrecio > 0  && this.getDineroIngresado() >= 1){
+            this.setDineroAlquiler(this.getDineroAlquiler() + p_nuevoPrecio);
+            this.extraerDinero(p_nuevoPrecio);
+            }else if(this.getDineroIngresado() == 0){
+                JOptionPane.showMessageDialog(null,"Primero Necesita ingresar dinero a la cuenta");
+            }else if(p_nuevoPrecio == 0){
+                JOptionPane.showMessageDialog(null,"No se puede ingresar un valor cero.\n intentelo nuevamente");
+            }else{
+                JOptionPane.showMessageDialog(null,"No se puede ingresar un valor negativo.\n intentelo nuevamente");
+            }
+        
     }
 
     /**
@@ -150,28 +172,29 @@ public class GestionDinero{
         return this.getDineroCelular() + this.getDineroAlquiler();
     }
 
-    //public void modificarSueldo()
-
     /**
      * Metodo que imprime las cuentas a pagar fijamente.
      */
     public void cuentasFijas(){
-            //String mensaje = "---Cuentas Fijas A Pagar---\n\n" +
-            //"(1)-Alquiler: $" + this.getDineroAlquiler() + "\n" +
-            //"(2)-Celulares: $" + this.getDineroCelular() + "\n";
-            //JOptionPane.showMessageDialog(null, mensaje+this.puedePagar());
-            JOptionPane.showMessageDialog(null,"---Cuentas Fijas A Pagar---\\n"+"(1)-Alquiler: $" +
+            JOptionPane.showMessageDialog(null,"---Cuentas Fijas A Pagar---\n"+"(1)-Alquiler: $" +
             this.getDineroAlquiler() + "\n" + "(2)-Celulares: $" + this.getDineroCelular() + "\n"+this.puedePagar());
     }
     
+    /**
+     * Metodo que retorna un mensaje tipo STRING que indica si puede pagar las cuentas en base al dinero ingresado
+     * @return un mensaje
+     */
     public String puedePagar(){
         String mensajePositivo = "Puede Pagar";
         String mensajeNegativo = "No Alcanza, Falta Dinero!";
+        String mensajeNeutro = "Saldos Esperando a ser modificados!";
         
         if(this.montoTotal() >= this.totalServiciosPagar() && this.getDineroIngresado() != 0){
             return mensajePositivo;
-            }else{
+            }else if(this.montoTotal() < this.totalServiciosPagar() && this.getDineroIngresado() != 0){
                 return mensajeNegativo;
+            }else{
+                return mensajeNeutro;
             }
     }
     
