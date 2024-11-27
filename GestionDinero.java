@@ -15,14 +15,17 @@ public class GestionDinero{
     private double dineroAlquiler; // se utilizara para pagar los servicios del alquiler.(agua,luz,expensas,extras).
     
     private double pagarCelulares; // Se utilizara para pagar los servicios telefonicos.
+
+    private double pagarWifi; // se utilizara para pagar el wifi del hogar.
     
 
-    GestionDinero(Double p_dineroIngresado,Double p_dineroExtraido, double p_dineroAlquiler, double p_dineroCelulares,double p_sueldo){
+    GestionDinero(Double p_dineroIngresado,Double p_dineroExtraido, double p_dineroAlquiler, double p_dineroCelulares,double p_sueldo,double p_pagarWifi){
         this.setDineroIngresado(p_dineroIngresado);
         this.setDineroExtraido(p_dineroExtraido);
         this.setDineroAlquiler(p_dineroAlquiler);
         this.setDineroCelulares(p_dineroCelulares);
         this.setSueldoMensual(p_sueldo);
+        this.setDineroInternet(p_pagarWifi);
     }
 
     GestionDinero(){
@@ -30,6 +33,7 @@ public class GestionDinero{
         this.setDineroExtraido(0.0);
         this.setDineroAlquiler(0.0);
         this.setDineroCelulares(0.0);
+        this.setDineroInternet(0.0);
         this.setSueldoMensual(0.0);
     }
 
@@ -50,6 +54,10 @@ public class GestionDinero{
 
     private void setDineroCelulares(Double p_dineroCelular){
         this.pagarCelulares = p_dineroCelular;
+    }
+
+    private void setDineroInternet(Double p_dineroWifi){
+        this.pagarWifi = p_dineroWifi;
     }
 
     private void setSueldoMensual(Double p_sueldo){
@@ -73,6 +81,10 @@ public class GestionDinero{
 
     public double getDineroCelular(){
         return this.pagarCelulares;
+    }
+
+    public double getDineroInternet(){
+        return this.pagarWifi;
     }
 
     public double getSueldoMensual(){
@@ -162,6 +174,23 @@ public class GestionDinero{
                 JOptionPane.showMessageDialog(null,"No se puede ingresar un valor negativo.\n intentelo nuevamente");
             }
         
+    }
+    /**
+     * Metodo cuentaInternet, utilidad del metodo: determinar la cuenta del wifi que debo pagar al mes, siendo este modificable.
+     * 
+     * @param p_nuevoPrecio el precio a agregar o modificar de la cuenta.
+     */
+    public void cuentaInternet(double p_nuevoPrecio){
+        if(p_nuevoPrecio > 0 && this.getDineroIngresado() >= 1){
+            this.setDineroInternet(this.getDineroInternet() + p_nuevoPrecio);
+            this.extraerDinero(p_nuevoPrecio);
+        }else if(this.getDineroIngresado() == 0){
+            JOptionPane.showMessageDialog(null,"Primero Necesita ingresar dinero a la cuenta");
+        }else if(p_nuevoPrecio == 0){
+            JOptionPane.showMessageDialog(null,"No se puede ingresar un valor cero.\n intentelo nuevamente");
+        }else{
+            JOptionPane.showMessageDialog(null,"No se puede ingresar un valor negativo.\n intentelo nuevamente");
+        }
     }
 
     /**

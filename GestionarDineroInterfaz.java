@@ -61,6 +61,7 @@ public class GestionarDineroInterfaz extends JFrame{
         JButton btnMontoTotal = new JButton("Monto Total");
         JButton btnGastosAlquiler = new JButton("Gastos Alquiler");
         JButton btnGastosCelular = new JButton("Gastos Celular");
+        JButton btnGastosInternet = new JButton("Gastos Internet");
         JButton btnGastosFijos = new JButton("Gastos FIJOS");
         JButton btnEXIT = new JButton("SALIR");
 
@@ -70,6 +71,7 @@ public class GestionarDineroInterfaz extends JFrame{
         btnMontoTotal.setPreferredSize(new Dimension(150, 30));
         btnGastosAlquiler.setPreferredSize(new Dimension(150, 30));
         btnGastosCelular.setPreferredSize(new Dimension(150, 30));
+        btnGastosInternet.setPreferredSize(new Dimension(150, 30));
         btnGastosFijos.setPreferredSize(new Dimension(150, 30));
         btnEXIT.setPreferredSize(new Dimension(150, 30));
 
@@ -127,7 +129,15 @@ public class GestionarDineroInterfaz extends JFrame{
             public void actionPerformed(ActionEvent e){
                 double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Celular A Modificar: "));
                 operaciones.cuentaCelular(p_costo);
-                operaciones.puedePagar();
+            }
+        });
+
+
+        btnGastosInternet.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Internet A Modificar: "));
+                operaciones.cuentaInternet(p_costo);
             }
         });
 
@@ -152,6 +162,7 @@ public class GestionarDineroInterfaz extends JFrame{
         panelBotones.add(btnMontoTotal);
         panelBotones.add(btnGastosAlquiler);
         panelBotones.add(btnGastosCelular);
+        panelBotones.add(btnGastosInternet);
         panelBotones.add(btnGastosFijos);
         panelBotones.add(btnEXIT);
 
