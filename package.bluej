@@ -20,7 +20,11 @@ package.editor.y=0
 package.frame.height=736
 package.frame.width=1376
 package.numDependencies=2
+<<<<<<< HEAD
 package.numTargets=9
+=======
+package.numTargets=10
+>>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
@@ -36,6 +40,16 @@ target1.type=ClassTarget
 target1.width=120
 target1.x=30
 target1.y=190
+<<<<<<< HEAD
+=======
+target10.height=70
+target10.name=PanelSecondConImagen
+target10.showInterface=false
+target10.type=ClassTarget
+target10.width=180
+target10.x=260
+target10.y=130
+>>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
 target2.height=70
 target2.name=GestionDinero
 target2.showInterface=false
@@ -58,6 +72,7 @@ target4.width=130
 target4.x=490
 target4.y=220
 target5.height=70
+<<<<<<< HEAD
 target5.name=GestionarDineroInterfaz
 target5.showInterface=false
 target5.type=ClassTarget
@@ -92,3 +107,39 @@ target9.type=ClassTarget
 target9.width=180
 target9.x=260
 target9.y=130
+=======
+target5.name=prueba
+target5.showInterface=false
+target5.type=ClassTarget
+target5.width=120
+target5.x=10
+target5.y=210
+target6.height=70
+target6.name=GestionarDineroInterfaz
+target6.showInterface=false
+target6.type=ClassTarget
+target6.width=180
+target6.x=10
+target6.y=330
+target7.height=70
+target7.name=tempCodeRunnerFile
+target7.showInterface=false
+target7.type=ClassTarget
+target7.width=160
+target7.x=200
+target7.y=230
+target8.height=70
+target8.name=GestionTareas
+target8.showInterface=false
+target8.type=ClassTarget
+target8.width=120
+target8.x=30
+target8.y=90
+target9.height=70
+target9.name=Interfaz_Grafica
+target9.showInterface=false
+target9.type=ClassTarget
+target9.width=120
+target9.x=480
+target9.y=80
+>>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24

@@ -74,7 +74,10 @@ public class GestionarDineroInterfaz extends JFrame{
         JButton btnGastosInternet = new JButton("Gastos Internet");
         JButton btnGastosFijos = new JButton("Gastos FIJOS");
         JButton btnEXIT = new JButton("SALIR");
+<<<<<<< HEAD
         
+=======
+>>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
 
         // Ajustar tamaño preferido de los botones
         btnAgregarDinero.setPreferredSize(new Dimension(150, 30));
@@ -126,6 +129,7 @@ public class GestionarDineroInterfaz extends JFrame{
         });
 
 
+<<<<<<< HEAD
         btnGastosAlquiler.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,6 +161,9 @@ public class GestionarDineroInterfaz extends JFrame{
         });
 
         btnGastosInternet.addActionListener(new ActionListener(){
+=======
+        btnGastosAlquiler.addActionListener(new ActionListener(){
+>>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
             @Override
             public void actionPerformed(ActionEvent e){
                 double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Internet A Modificar: "));
@@ -165,6 +172,27 @@ public class GestionarDineroInterfaz extends JFrame{
         });
 
 
+<<<<<<< HEAD
+=======
+        btnGastosCelular.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Celular A Modificar: "));
+                operaciones.cuentaCelular(p_costo);
+            }
+        });
+
+
+        btnGastosInternet.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Internet A Modificar: "));
+                operaciones.cuentaInternet(p_costo);
+            }
+        });
+
+
+>>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
         btnGastosFijos.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){

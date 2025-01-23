@@ -209,8 +209,11 @@ public class GestionDinero{
             this.getDineroAlquiler() + "\n" + "(2)-Celulares: $" + this.getDineroCelular() + "\n"+this.puedePagar());
     }
     
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
     /**
      * Metodo que retorna un mensaje tipo STRING que indica si puede pagar las cuentas en base al dinero ingresado
      * @return un mensaje
