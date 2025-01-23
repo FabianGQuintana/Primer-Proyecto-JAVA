@@ -34,7 +34,7 @@ public class Interfaz_Grafica extends JFrame{
 
     public void configuracionVentana(){
         this.setTitle("Sistema Administrador");
-        this.setSize(600,400);
+        this.setSize(340,400);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
