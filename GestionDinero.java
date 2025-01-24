@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
  * Inicialmente este proyecto estara pensando en una interfaz grafica en la cual tenga como seleccion principal 2 botones.
  * El primer boton sea "DINERO", en la cual se centre en la gestion y administracion de ingreso y egresos de plata . 
  * el segundo boton sea "Tareas" en la cual se centre en la gestion y administracion de tareas a realizar .
- * 
+ *
  * @author Quintana Gustavo Fabian.
  * @version v1.
  */
@@ -19,7 +19,7 @@ public class GestionDinero{
     private double pagarWifi; // se utilizara para pagar el wifi del hogar.
     
 
-    GestionDinero(Double p_dineroIngresado,Double p_dineroExtraido, double p_dineroAlquiler, double p_dineroCelulares,double p_sueldo,double p_pagarWifi){
+    public GestionDinero(Double p_dineroIngresado,Double p_dineroExtraido, double p_dineroAlquiler, double p_dineroCelulares,double p_sueldo,double p_pagarWifi){
         this.setDineroIngresado(p_dineroIngresado);
         this.setDineroExtraido(p_dineroExtraido);
         this.setDineroAlquiler(p_dineroAlquiler);
@@ -28,7 +28,7 @@ public class GestionDinero{
         this.setDineroInternet(p_pagarWifi);
     }
 
-    GestionDinero(){
+    public GestionDinero(){
         this.setDineroIngresado(0.0);
         this.setDineroExtraido(0.0);
         this.setDineroAlquiler(0.0);
@@ -198,7 +198,7 @@ public class GestionDinero{
      * @return el precio total de servicios.
      */
     public double totalServiciosPagar(){
-        return this.getDineroCelular() + this.getDineroAlquiler();
+        return this.getDineroCelular() + this.getDineroAlquiler() + this.getDineroInternet();
     }
 
     /**
@@ -206,22 +206,20 @@ public class GestionDinero{
      */
     public void cuentasFijas(){
             JOptionPane.showMessageDialog(null,"---Cuentas Fijas A Pagar---\n"+"(1)-Alquiler: $" +
-            this.getDineroAlquiler() + "\n" + "(2)-Celulares: $" + this.getDineroCelular() + "\n"+this.puedePagar());
+            this.getDineroAlquiler() + "\n" + "(2)-Celulares: $" + this.getDineroCelular() + "\n" +"(3)-Internet: $"+this.getDineroInternet() + "\n"+this.puedePagar());
     }
     
-<<<<<<< HEAD
-    
 
-=======
->>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
+
+
     /**
      * Metodo que retorna un mensaje tipo STRING que indica si puede pagar las cuentas en base al dinero ingresado
      * @return un mensaje
      */
     public String puedePagar(){
-        String mensajePositivo = "Puede Pagar";
-        String mensajeNegativo = "No Alcanza, Falta Dinero!";
-        String mensajeNeutro = "Saldos Esperando a ser modificados!";
+        String mensajePositivo = "\n" + "Puede Pagar";
+        String mensajeNegativo = "\n" + "No Alcanza, Falta Dinero!";
+        String mensajeNeutro   =   "\n" + "Saldos Esperando a ser modificados!";
         
         if(this.montoTotal() >= this.totalServiciosPagar() && this.getDineroIngresado() != 0){
             return mensajePositivo;

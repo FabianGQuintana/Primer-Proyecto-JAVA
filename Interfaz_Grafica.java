@@ -18,18 +18,30 @@ import javax.swing.JPanel;
 
 public class Interfaz_Grafica extends JFrame{
     
-    //private GestionarDineroInterfaz interfazDinero;
+    
     
     Interfaz_Grafica(){
         
         this.configuracionVentana();
-
+        this.openFile();
         this.inicializarComponentes();
 
         
 
     }
 
+    public void openFile(){
+        OpenFiles newFile = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\DataFile.txt");
+        newFile.createFile();
+    }
+
+    public void openFileSalary(String p_nameFile){
+        String nameFile = p_nameFile;
+        OpenFiles newFile = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\"+nameFile);
+        newFile.createFile();
+    }
+
+    
 
 
     public void configuracionVentana(){
@@ -67,14 +79,13 @@ public class Interfaz_Grafica extends JFrame{
         btnSalir.setPreferredSize(new Dimension(150, 30));
 
         // Agregar listeners para los botones
-        btnDinero.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GestionarDineroInterfaz().setVisible(true);
-            }
+        btnDinero.addActionListener(e -> { //expresion lambda mas facil de leer y mas limpio. (mejor opcion que usar ActionPerformed).
+            openFileSalary("SalaryFile.txt");
+            new GestionarDineroInterfaz().setVisible(true);
         });
+        
 
-        btnTareas.addActionListener(new ActionListener() {
+        btnTareas.addActionListener(new ActionListener() { // modificar al metodo del primer boton.
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GestionarTareasInterfaz().setVisible(true);
@@ -84,17 +95,17 @@ public class Interfaz_Grafica extends JFrame{
         btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0); // Salir del programa
+                System.exit(0); // Salir del programa.
             }
         });
 
 
-        // Agregar botones al panel de botones
+        // Agregar botones al panel de botones.
         panelBotones.add(btnDinero);
         panelBotones.add(btnTareas);
         panelBotones.add(btnSalir);
 
-        // Agregar panel de botones al centro del panel principal
+        // Agregar panel de botones al centro del panel principal.
         panelPrincipal.add(panelBotones, BorderLayout.CENTER);
 
         // Agregar panel principal al JFrame

@@ -6,10 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//Archivos
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,25 +14,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
 public class GestionarDineroInterfaz extends JFrame{
 
     GestionDinero operaciones = new GestionDinero();
 
     JPanel panel = new JPanel();
 
-    //Ubicacion del archivo
-    File archivo = new File("C:/Users/Fabian/OneDrive/Escritorio/Proyecto_Gestion_De_Tareas/FileProjectWithData.txt");
-
-
-
+    
     //Constructor
-    GestionarDineroInterfaz(){
+    public GestionarDineroInterfaz(){
         
         this.inicializarVentana();
         this.inicializarComponentes();
 
     }
+
 
     public void inicializarVentana(){
 
@@ -50,6 +42,7 @@ public class GestionarDineroInterfaz extends JFrame{
 
 
     public void inicializarComponentes(){
+
 
         JPanel panelSecondImagen = new PanelSecondConImagen(new ImageIcon("C://Users//Fabian//OneDrive//Escritorio//Imagenes//panteraRosafoto2.jpg"));
 
@@ -74,10 +67,7 @@ public class GestionarDineroInterfaz extends JFrame{
         JButton btnGastosInternet = new JButton("Gastos Internet");
         JButton btnGastosFijos = new JButton("Gastos FIJOS");
         JButton btnEXIT = new JButton("SALIR");
-<<<<<<< HEAD
-        
-=======
->>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
+
 
         // Ajustar tamaño preferido de los botones
         btnAgregarDinero.setPreferredSize(new Dimension(150, 30));
@@ -96,7 +86,15 @@ public class GestionarDineroInterfaz extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try{
                     double p_dinero = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Valor A Agregar: "));
-                    
+
+                    // Guardar en el archivo correspondiente
+                    OpenFiles newFileAddMount = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\depositRegister.txt");
+
+                    // Usamos el método getCurrentDate para agregar la fecha
+                    String fecha = newFileAddMount.getCurrentDate();
+
+                    newFileAddMount.writeToFile(newFileAddMount.toString() + "\n" + "Se Ha Agregado: $" + p_dinero + " || " + fecha +"\n" + newFileAddMount.toString());
+
                     operaciones.agregarDinero(p_dinero);
                     
                     }catch (NumberFormatException ex) {
@@ -112,6 +110,15 @@ public class GestionarDineroInterfaz extends JFrame{
                     String input = JOptionPane.showInputDialog("Ingrese El Valor A Extraer:");
                     if (input == null) return; // Cancelación
                     double p_dinero = Double.parseDouble(input);
+
+                    // Guardar en el archivo correspondiente
+                    OpenFiles newFileWithdrawAmount = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\depositExtraction.txt");
+
+                    // Usamos el método getCurrentDate para agregar la fecha
+                    String fecha = newFileWithdrawAmount.getCurrentDate();
+
+                    newFileWithdrawAmount.writeToFile(newFileWithdrawAmount.toString() + "\n" + "Se Ha Extraido: $" + p_dinero + " || " + fecha +"\n" + newFileWithdrawAmount.toString());
+
                     operaciones.extraerDinero(p_dinero);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
@@ -120,16 +127,12 @@ public class GestionarDineroInterfaz extends JFrame{
         });
         
 
-
         btnMontoTotal.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 operaciones.mostrarDineroActual();
             }
         });
-
-
-<<<<<<< HEAD
         btnGastosAlquiler.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,6 +140,15 @@ public class GestionarDineroInterfaz extends JFrame{
                     String input = JOptionPane.showInputDialog("Ingrese El Costo De Alquiler A Modificar:");
                     if (input == null) return; // Cancelación
                     double p_costo = Double.parseDouble(input);
+
+                    // Guardar en el archivo correspondiente
+                    OpenFiles newFileRentalService = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\RentalService.txt");
+
+                    // Usamos el método getCurrentDate para agregar la fecha
+                    String fecha = newFileRentalService.getCurrentDate();
+
+                    newFileRentalService.writeToFile(newFileRentalService.toString() + "\n" + "Monto: $" + p_costo + " || " + fecha +"\n" + newFileRentalService.toString());
+
                     operaciones.cuentaAlquiler(p_costo);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
@@ -144,8 +156,6 @@ public class GestionarDineroInterfaz extends JFrame{
             }
         });
         
-
-
         btnGastosCelular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -153,53 +163,53 @@ public class GestionarDineroInterfaz extends JFrame{
                     String input = JOptionPane.showInputDialog("Ingrese El Costo De Celular A Modificar:");
                     if (input == null) return; // Cancelación
                     double p_costo = Double.parseDouble(input);
+
+                    // Guardar en el archivo correspondiente
+                    OpenFiles newFileTelephoneService = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\TelephoneService.txt");
+
+                    // Usamos el método getCurrentDate para agregar la fecha
+                    String fecha = newFileTelephoneService.getCurrentDate();
+
+                    newFileTelephoneService.writeToFile(newFileTelephoneService.toString() + "\n" + "Monto: $" + p_costo + " || " + fecha +"\n" + newFileTelephoneService.toString());
+                    
                     operaciones.cuentaCelular(p_costo);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
                 }
             }
         });
-
-        btnGastosInternet.addActionListener(new ActionListener(){
-=======
-        btnGastosAlquiler.addActionListener(new ActionListener(){
->>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
-            @Override
-            public void actionPerformed(ActionEvent e){
-                double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Internet A Modificar: "));
-                operaciones.cuentaInternet(p_costo);
-            }
-        });
-
-
-<<<<<<< HEAD
-=======
-        btnGastosCelular.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Celular A Modificar: "));
-                operaciones.cuentaCelular(p_costo);
-            }
-        });
-
-
+        
         btnGastosInternet.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 double p_costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese El Costo De Internet A Modificar: "));
+
+                // Guardar en el archivo correspondiente
+                OpenFiles newFileInternetService = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\InternetService.txt");
+
+                // Usamos el método getCurrentDate para agregar la fecha
+                String fecha = newFileInternetService.getCurrentDate();
+
+                newFileInternetService.writeToFile(newFileInternetService.toString() + "\n" + "Monto: $" + p_costo + " || " + fecha +"\n" + newFileInternetService.toString());
+
                 operaciones.cuentaInternet(p_costo);
             }
         });
-
-
->>>>>>> d91ad711c49e59680ffda301adc139e226d8ee24
         btnGastosFijos.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+
+                // Guardar en el archivo correspondiente
+                OpenFiles newFileFixedCosts = new OpenFiles("C:\\Users\\Fabian\\OneDrive\\Escritorio\\Proyecto_Gestion_De_Tareas\\Primer-Proyecto-JAVA\\DataBaseProject\\FixedCosts.txt");
+
+                // Usamos el método getCurrentDate para agregar la fecha
+                String fecha = newFileFixedCosts.getCurrentDate();
+
+                newFileFixedCosts.writeToFile(newFileFixedCosts.toString() + "\n" + "Total De Gastos Fijos: $" + operaciones.totalServiciosPagar() + " || " + fecha + "\n" + newFileFixedCosts.toString());
+
                 operaciones.cuentasFijas();
             }
         });
-
         btnEXIT.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -222,41 +232,6 @@ public class GestionarDineroInterfaz extends JFrame{
 
         // Agregar panel segundo al JFrame
         this.add(panelSecondImagen);
-    }
-
-    public void fileManagement(){
-        
-        String nombreArchivo = "FileProjectWithData.txt";
-
-         // Ruta del archivo
-        File archivo = new File(nombreArchivo);
-
-        try {
-            // Verificar si el archivo existe, si no, crearlo
-            if (!archivo.exists()) {
-                boolean creado = archivo.createNewFile(); // Crear el archivo
-                if (creado) {
-                    System.out.println("Archivo creado en: " + archivo.getAbsolutePath());
-                } else {
-                    System.out.println("No se pudo crear el archivo.");
-                }
-            }
-
-            // Crear el FileWriter en modo de adición (append)
-            FileWriter writter = new FileWriter(archivo, true);
-
-            // Escribir datos en el archivo
-            writter.write("Este es un ejemplo de datos guardados.\n");
-            writter.write("Puedes agregar más datos al archivo.\n");
-
-            // Cerrar el FileWriter
-            writter.close();
-
-            System.out.println("Datos guardados exitosamente.");
-        } catch (IOException e) {
-            System.out.println("Ocurrió un error al trabajar con el archivo.");
-            e.printStackTrace();
-        }
     }
 
 }
